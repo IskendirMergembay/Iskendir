@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("How many students: ");
+        int num = scanner.nextInt();
+        String[] studentsName = new String[num];
+        int[] studentsAge = new int[num];
+        int[] studentsGrade = new int[num];
+        for (int i = 0; i < num; i++){
+            System.out.print(i + 1 + "st student's name: ");
+            studentsName[i] = scanner.next();
+            System.out.print(i + 1 + "st student's age: ");
+            studentsAge[i] = scanner.nextInt();
+            System.out.print(i + 1 + "st student's average grade: ");
+            studentsGrade[i] = scanner.nextInt();
+        }
+        for (int i = 0; i < num - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < num; j++) {
+                if (studentsAge[j] < studentsAge[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            int temp1 = studentsAge[minIndex];
+            String temp2 = studentsName[minIndex];
+            int temp3 = studentsGrade[minIndex];
+            studentsAge[minIndex] = studentsAge[i];
+            studentsName[minIndex] = studentsName[i];
+            studentsGrade[minIndex] = studentsGrade[i];
+            studentsAge[i] = temp1;
+            studentsName[i] = temp2;
+            studentsGrade[i] = temp3;
+        }
+        for (int i = 0; i < num; i++){
+            System.out.println(studentsName[i] + ", " + studentsAge[i] + ", " + studentsGrade[i]);
+        }
+    }
+}

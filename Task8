@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+public class SortByExtension {
+
+    public static void main(String[] args) {
+        // Create a list of file names
+        ArrayList<String> fileNames = new ArrayList<>();
+        fileNames.add("file1.txt");
+        fileNames.add("file2.pdf");
+        fileNames.add("file3.png");
+        fileNames.add("file4.docx");
+
+        // Create a custom comparator to compare file names by extension
+        Comparator<String> comparator = (s1, s2) -> {
+            int lastDotIndex1 = s1.lastIndexOf('.');
+            int lastDotIndex2 = s2.lastIndexOf('.');
+            String extension1 = s1.substring(lastDotIndex1);
+            String extension2 = s2.substring(lastDotIndex2);
+            return extension1.compareTo(extension2);
+        };
+
+        // Sort the list of file names using the custom comparator
+        Collections.sort(fileNames, comparator);
+
+        // Print the sorted list of file names
+        for (String fileName : fileNames) {
+            System.out.println(fileName);
+        }
+    }
+}

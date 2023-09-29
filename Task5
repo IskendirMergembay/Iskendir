@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class Algoritm {
+    public static void main(String[] args){
+        int[] array = {1, 4, 5, 6, 2, 7, 77, 3, 22, 5};
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("How many elements to sort: ");
+        int num = scanner.nextInt();
+        for (int i = 1; i < num; i++) {
+            int key = array[i];
+            int j = i - 1;
+            while (j > 0 && array[j] > key){
+                array[j+1] = array[j];
+                j-=1;
+            }
+            array[j+1] = key;
+        }
+        for (int i = 0; i < num; i++) {
+            System.out.print(array[i] + " ");
+        }
+    }
+}
